@@ -54,7 +54,7 @@ event.listen('sidecar-running', (evt: { payload: string }) => {
   serverStore.writeOutput(evt.payload)
 })
 const startOne = async () => {
-  const listen = `socks://127.0.0.1:${socksPort.value}"`
+  const listen = `socks://127.0.0.1:${socksPort.value}`
   const server = servers.value[selected.value]
   const proxy = `https://${server.username}:${server.password}@${server.address}:${server.port}`
   const config = {
