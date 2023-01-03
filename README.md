@@ -1,4 +1,4 @@
-# Vess
+# Nave
 
 desktop client (Mac / Windows / Linux) of [naiveproxy](https://github.com/klzgrad/naiveproxy)
 
