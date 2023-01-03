@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn{
+  @apply rounded px-2 flex items-center justify-center text-sm;
+}
+.btn-primary{
+  @apply btn border-blue-500 bg-blue-500 !text-white
+}
+.btn-danger{
+  @apply btn border-red-500 bg-red-500 !text-white
+}
+.btn-secondary{
+  @apply btn border-gray-200 bg-gray-200 !text-current
+}
+.btn-success{
+  @apply btn border-green-500 bg-green-500 !text-white
+}
+.btn-outline-primary{
+  @apply btn border-blue-500 border text-blue-500
+}
+.btn-outline-secondary{
+  @apply btn border-gray-400 border text-gray-600
+}
+.btn-outline-success{
+  @apply btn border-green-400 border text-green-500
+}
