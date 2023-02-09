@@ -9,7 +9,7 @@ desktop client (Mac / Windows / Linux) of [naiveproxy](https://github.com/klzgra
 
 Download from [Releases](https://github.com/ali322/nave/releases)
 
-## How does Vess work
+## How does Nave work
 
 Nave provides a GUI to generate the config file for naiveproxy. It includes naiveproxy's binary executable in the app bundle. 
 
