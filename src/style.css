@@ -26,3 +26,10 @@
 .btn-outline-success{
   @apply btn border-green-400 border text-green-500
 }
+
+input:checked ~ .dot {
+  transform: translateX(100%);
+}
+input:checked ~ .block {
+  @apply bg-blue-500
+}

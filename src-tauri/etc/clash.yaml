@@ -1,0 +1,31 @@
+mixed-port: 1081
+profile:
+  store-selected: false
+  store-fake-ip: false
+proxies:
+  - name: PROXY
+    type: socks5
+    server: 127.0.0.1
+    port: 1080
+    udp: true
+dns:
+  enable: true
+  ipv6: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  default-nameserver:
+    - 119.29.29.29
+    - 1.1.1.1
+    - 8.8.8.8
+  nameserver:
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
+rules:
+  - DOMAIN-KEYWORD,google,PROXY
+  - DOMAIN-KEYWORD,gmail,PROXY
+  - DOMAIN-KEYWORD,youtube,PROXY
+  - IP-CIDR,127.0.0.0/8,DIRECT
+  - IP-CIDR,172.16.0.0/12,DIRECT
+  - IP-CIDR,192.168.0.0/16,DIRECT
+  - GEOIP,CN,DIRECT
+  - MATCH,PROXY

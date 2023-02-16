@@ -11,6 +11,7 @@ import { storeToRefs } from 'pinia'
 import { watch, ref } from 'vue'
 import Confirm from '@/components/Confirm.vue'
 import { event, tauri } from '@tauri-apps/api'
+import clashSettings from '@/util/clash'
 import useServerStore from '@/store/server'
 import useSettingStore from '@/store/setting'
 import ServerList from '@/modules/ServerList.vue'
@@ -20,7 +21,7 @@ const confirmRef = ref<InstanceType<typeof Confirm>>()
 const serverStore = useServerStore()
 const { servers, selected, running } = storeToRefs(serverStore)
 const settingStore = useSettingStore()
-const { socksPort } = storeToRefs(settingStore)
+const { socksPort, relayPort } = storeToRefs(settingStore)
 
 watch(() => servers.value.length, (curr: number, prev: number) => {
   if (prev === 0 && curr > 0) {
@@ -61,7 +62,10 @@ const startOne = async () => {
     listen, proxy, log: ''
   }
   tauri.invoke('run_sidecar', { config: JSON.stringify(config, null, 2) })
+  const next = clashSettings(socksPort.value, relayPort.value)
+  tauri.invoke('run_clash', {config: next})
   running.value = true
+
 }
 const stopOne = () => {
   event.emit('stop-sidecar')
