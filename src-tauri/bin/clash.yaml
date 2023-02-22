@@ -25,7 +25,7 @@ dns:
     - localhost.ptlogin2.qq.com
 tun:
   enable: true 
-  stack: system
+  stack: gvisor
   auto-route: true
   auto-detect-interface: true
 rule-providers:
