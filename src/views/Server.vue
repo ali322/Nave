@@ -10,7 +10,7 @@
 import { storeToRefs } from 'pinia'
 import { watch, ref } from 'vue'
 import Confirm from '@/components/Confirm.vue'
-import { event, tauri } from '@tauri-apps/api'
+import { event, tauri, path } from '@tauri-apps/api'
 import clashSettings from '@/util/clash'
 import useServerStore from '@/store/server'
 import useSettingStore from '@/store/setting'
@@ -55,6 +55,7 @@ event.listen('sidecar-running', (evt: { payload: string }) => {
   serverStore.writeOutput(evt.payload)
 })
 const startOne = async () => {
+  let resDir = await path.resourceDir()
   const listen = `socks://127.0.0.1:${socksPort.value}`
   const server = servers.value[selected.value]
   const proxy = `https://${server.username}:${server.password}@${server.address}:${server.port}`
@@ -62,7 +63,7 @@ const startOne = async () => {
     listen, proxy, log: ''
   }
   tauri.invoke('run_sidecar', { config: JSON.stringify(config, null, 2) })
-  const next = clashSettings(socksPort.value, relayPort.value)
+  const next = clashSettings(socksPort.value, relayPort.value, resDir)
   tauri.invoke('run_clash', {config: next})
   running.value = true
 

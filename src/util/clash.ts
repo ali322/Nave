@@ -1,6 +1,6 @@
 import YAML from 'yaml'
 
-export default (origin: number, dest: number) => {
+export default (origin: number, dest: number, resDir: string) => {
   const config = YAML.stringify({
     "mixed-port": dest,
     "profile": {
@@ -43,66 +43,57 @@ export default (origin: number, dest: number) => {
     // },
     "rule-providers": {
       "applications": {
-        "type": "http",
+        "type": "file",
         "behavior": "domain",
-        "url": "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/applications.txt",
-        "path": "./ruleset/applications.yaml",
+        "path": `${resDir}etc/ruleset/applications.yaml`,
         "interval": 86400
       },
       "icloud": {
-        "type": "http",
+        "type": "file",
         "behavior": "domain",
-        "url": "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/icloud.txt",
-        "path": "./ruleset/icloud.yaml",
+        "path": `${resDir}etc/ruleset/icloud.yaml`,
         "interval": 86400
       },
       "apple": {
-        "type": "http",
+        "type": "file",
         "behavior": "domain",
-        "url": "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/apple.txt",
-        "path": "./ruleset/apple.yaml",
+        "path": `${resDir}etc/ruleset/apple.yaml`,
         "interval": 86400
       },
       "proxy": {
-        "type": "http",
+        "type": "file",
         "behavior": "domain",
-        "url": "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/proxy.txt",
-        "path": "./ruleset/direct.yaml",
+        "path": `${resDir}etc/ruleset/proxy.yaml`,
         "interval": 86400
       },
       "reject": {
-        "type": "http",
+        "type": "file",
         "behavior": "domain",
-        "url": "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/reject.txt",
-        "path": "./ruleset/reject.yaml",
+        "path": `${resDir}etc/ruleset/reject.yaml`,
         "interval": 86400
       },
       "direct": {
-        "type": "http",
+        "type": "file",
         "behavior": "domain",
-        "url": "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/direct.txt",
-        "path": "./ruleset/direct.yaml",
+        "path": `${resDir}etc/ruleset/direct.yaml`,
         "interval": 86400
       },
       "private": {
-        "type": "http",
+        "type": "file",
         "behavior": "domain",
-        "url": "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/private.txt",
-        "path": "./ruleset/private.yaml",
+        "path": `${resDir}etc/ruleset/private.yaml`,
         "interval": 86400
       },
       "cncidr": {
-        "type": "http",
+        "type": "file",
         "behavior": "domain",
-        "url": "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/cncidr.txt",
-        "path": "./ruleset/cncidr.yaml",
+        "path": `${resDir}etc/ruleset/cncidr.yaml`,
         "interval": 86400
       },
       "lancidr": {
-        "type": "http",
+        "type": "file",
         "behavior": "domain",
-        "url": "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/lancidr.txt",
-        "path": "./ruleset/lancidr.yaml",
+        "path": `${resDir}etc/ruleset/lancidr.yaml`,
         "interval": 86400
       },
     },
