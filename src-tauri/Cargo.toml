@@ -1,0 +1,32 @@
+[package]
+name = "nave"
+version = "0.0.0"
+description = "A Tauri App"
+authors = ["you"]
+license = ""
+repository = ""
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[build-dependencies]
+tauri-build = { version = "1.5", features = ["isolation"] }
+
+[dependencies]
+tauri = { version = "1.5", features = [ "path-all", "shell-sidecar", "isolation"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+pinger = "0.4.1"
+thiserror = "1"
+
+[target.'cfg(target_os = "macos")'.dependencies]
+interfaces = "0.0.8"
+
+[target.'cfg(target_os = "windows")'.dependencies]
+winreg = {version = "0.10", features = ["transactions"] }
+winapi = {version = "0.3.9", features= ["wininet"] }
+
+[features]
+# this feature is used for production builds or when `devPath` points to the filesystem
+# DO NOT REMOVE!!
+custom-protocol = ["tauri/custom-protocol"]

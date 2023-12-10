@@ -1,0 +1,60 @@
+{
+  "build": {
+    "beforeDevCommand": "pnpm dev",
+    "beforeBuildCommand": "pnpm build",
+    "devPath": "http://localhost:1420",
+    "distDir": "../dist"
+  },
+  "package": {
+    "productName": "Nave",
+    "version": "1.0.0"
+  },
+  "tauri": {
+    "pattern": {
+      "use": "isolation",
+      "options": {
+        "dir": "../dist-isolation"
+      }
+    },
+    "allowlist": {
+      "all": false,
+      "path": {
+        "all": true
+      },
+      "shell": {
+        "all": false,
+        "sidecar": true,
+        "scope": [
+          { "name": "bin/naive", "sidecar": true },
+          { "name": "bin/clash", "sidecar": true }
+        ]
+      }
+    },
+    "bundle": {
+      "active": true,
+      "targets": "all",
+      "externalBin": ["bin/naive", "bin/clash"],
+      "resources": ["etc"],
+      "identifier": "work.aliz.Nave",
+      "icon": [
+        "icons/32x32.png",
+        "icons/128x128.png",
+        "icons/128x128@2x.png",
+        "icons/icon.icns",
+        "icons/icon.ico"
+      ]
+    },
+    "security": {
+      "csp": null
+    },
+    "windows": [
+      {
+        "fullscreen": false,
+        "resizable": true,
+        "title": "nave",
+        "width": 800,
+        "height": 600
+      }
+    ]
+  }
+}
